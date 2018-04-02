@@ -15,7 +15,7 @@ get '/animals/new' do
   erb(:new)
 end
 
-post '/animals/new' do
+post '/animals' do
   Animal.new(params).save
   redirect to '/animals'
 end
