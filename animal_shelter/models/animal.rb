@@ -2,7 +2,7 @@ require_relative('../db/sql_runner')
 
 class Animal
 
-  attr_accessor :name, :species, :age, :owner_id
+  attr_accessor :name, :species, :age, :adoptable, :owner_id
   attr_reader :id
 
   def initialize(options)
@@ -10,49 +10,53 @@ class Animal
       @name = options['name']
       @species = options ['species']
       @age = options ['age']
+      @adoptable = options ['adoptable']
       @owner_id = options ['owner_id'].to_i
   end
 
 
   def save()
     sql = "INSERT INTO animals
-    (name, species, age, owner_id)
+    (name, species, age, adoptable, owner_id)
     VALUES
-    ($1, $2, $3, $4)
+    ($1, $2, $3, $4, $5)
     RETURNING id"
-    values = [@name, @species, @age, @owner_id]
+    values = [@name, @species, @age, @adoptable, @owner_id]
     result = SqlRunner.run(sql, values)
     id = result.first['id']
    @id = id
   end
 
+ # return an array of Animal objects (all of them)
+ def self.all()
+   sql = "SELECT * FROM animals"
+   values = []
+   animal_hash = SqlRunner.run(sql, values)
+
+   array_of_animal_objects = animal_hash.map { |animal_hash| Animal.new(animal_hash) }
+   return array_of_animal_objects
+ end
+
  def owner()
-   animal = Owner.find(@owner_id)
+   owner = Owner.find(@owner_id)
    return owner
+ end
+
+def delete()
+   sql = "DELETE FROM animals
+   WHERE id = $1"
+   values = [@id]
+   SqlRunner.run(sql, values)
  end
 
  def update()
   sql = "UPDATE animals
   SET
-  (name, species, age, owner_id) =
-  ($1, $2, $3, $4)
-  WHERE id = $5"      #remember to change this when adding breed etc
-  values = [@name, @species, @age, @owner_id, @id]
+  (name, species, age, adoptable, owner_id) =
+  ($1, $2, $3, $4, $5)
+  WHERE id = $6"      #remember to change this when adding breed etc
+  values = [@name, @species, @age, @adoptable, @owner_id, @id]
   SqlRunner.run(sql, values)
-  end
-
-  def delete()
-    sql = "DELETE FROM animals
-    WHERE id = $1"
-    values = [@id]
-    SqlRunner.run(sql, values)
-  end
-
-  def self.all()
-    sql = "SELECT * FROM animals"
-    animal_data = SqlRunner.run (sql)
-    animals = map_items(animal_data)
-    return animals
   end
 
   def self.map_items(animal_data)
@@ -66,7 +70,6 @@ class Animal
     result = SqlRunner.run(sql, values).first
     animal = Animal.new(result)
     return animal
-  end 
-
+  end
 
 end

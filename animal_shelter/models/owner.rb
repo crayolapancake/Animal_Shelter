@@ -1,26 +1,24 @@
 # to do: setup delete & update owner, if needed. remember to change attr_accessor also
-
-
-
 require_relative('../db/sql_runner')
 
 class Owner
 
-  attr_reader :id, :name, :pets
+  attr_accessor :name
+  attr_reader :id
 
   def initialize(options)
       @id = options['id'].to_i if options['id']
       @name = options['name']
-      @pets = options [] #is this right?
+
   end
 
   def save()
     sql = "INSERT INTO owners
-    (name, pets)
+    (name)
     VALUES
-    ($1, $2)
+    ($1)
     RETURNING id"
-    values = [@name, @pets]
+    values = [@name]
     result = SqlRunner.run(sql, values)
     id = result.first["id"]
     @id = id.to_i
@@ -29,18 +27,21 @@ class Owner
   def self.find(id)
     sql = "SELECT * FROM owners
     WHERE id = $1"
-    values = [id]     #not an @instance variable?
-    result = SqlRunner.run(sql, values).first #returns first itme in array
+    values = [id]
+    result = SqlRunner.run(sql, values).first
     owner = Owner.new(result)
     return owner
   end
 
-  def format_name
-    return "#{@first_name.capitalize} #{@last_name.capitalize}"
+  def self.all()
+      sql = "SELECT * FROM owners"
+      owner_data = SqlRunner.run(sql)
+      owners = map_items(owner_data)
+      return owners
   end
 
   def self.map_items(owner_data)
-    return house_date.map { |owner| Owner.new(owner) }
+    return owner_data.map { |owner| Owner.new(owner) }
   end
 
 end
