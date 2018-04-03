@@ -1,0 +1,47 @@
+body {
+  background-color: LightSkyBlue;
+  font-family: 'Montserrat', Serif;
+
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+h2 {
+  display: flex;
+  justify-content: center;
+}
+
+#images {
+  display: flex;
+  justify-content: space-between;
+}
+
+#adopt-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  align-items: center;
+}
+
+/* #all-animals{
+
+
+}
+
+
+#content {
+
+}
+
+#animal-wrapper {
+  display: flex;
+/* INDEX ERB*/
+}

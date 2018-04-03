@@ -2,17 +2,25 @@
 <html>
   <head>
       <title>Animal Shelter</title>
-    <link rel="stylesheet" type="text/css" href="main.css">
+      <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <div id="images">
+      <img src="/images/lottie_laptop.png" alt="Lottie the Collie">
+      <img src="/images/bambam.png"  alt="Bambam the ginger cat">
+      <img src="/images/islay2.png"  alt="Islay the Collie">
+  </div>
   </head>
   <body>
       <h1>Animal Shelter</h1>
       <nav id="menu">
-        <li class="menu-item"><a href='/animals'>Animals & Owners</a></li>
-        <li class="menu-item"><a href='/animals/new'>Add New Animal</a></li>
-        <li class="menu-item"><a href='/animals/owner/new'>Register and Adopt An Animal</a></li>
-        <li class="menu-item"><a href='/animals/cats'>Cats</a></li>
-        <li class="menu-item"><a href='/animals/dogs'>Dogs</a></li>
+        <ul class="menu-item"><a href='/animals'>Animals & Owners</a></ul>
+        <ul class="menu-item"><a href='/animals/new'>Add New Animal</a></ul>
+        <ul class="menu-item"><a href='/animals/owner/new'>Register and Adopt An Animal</a></ul>
+        <ul class="menu-item"><a href='/animals/cats'>Cats</a></ul>
+        <ul class="menu-item"><a href='/animals/dogs'>Dogs</a></ul>
     </nav>
+    <section id="content">
       <%= yield %>
+    </section>
   </body>
 </html>

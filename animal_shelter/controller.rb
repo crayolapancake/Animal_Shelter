@@ -12,11 +12,14 @@ end
 
 
 get '/animals/cats' do
-  @animals = Animal.find_cats(params['species' == 'cat'])
+  @animals = Animal.find_species('cat')
   erb(:index)
 end
 
-
+get '/animals/dogs' do
+  @animals = Animal.find_species('dog')
+  erb(:index)
+end
 
 get '/animals/new' do
   @owners = Owner.all

@@ -80,16 +80,15 @@ def delete()
     return animal
   end
 
-  def self.find_cats(species)
+  def self.find_species(species)
     sql = "SELECT * FROM animals
     WHERE species = $1"
-    values = (species)
-    result = SqlRunner.run(sql, values).first
+    values = [species]
+    result = SqlRunner.run(sql, values)
+    animal = result.map{|animal| Animal.new(animal)}
     return animal
   end
 
-  #
-  # def self.find_dogs
-  # end
+
 
 end
