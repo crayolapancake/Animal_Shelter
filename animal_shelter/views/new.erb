@@ -3,7 +3,7 @@
   <div class="form-wrapper">
 
     <div class="form-el">
-      <label for="name">Name:</label>
+      <label for="name">Animal Name:</label>
       <input type="text" name="name" id="name"/>
     </div>
 
@@ -22,16 +22,16 @@
       <input type="text" name="adoptable" id="adoptable"/>
     </div>
 
-    <!-- <div class="form-el">
-      <label for="owner_id">Owner:</label>
-      <input type="text" name="owner_id" id="owner_id"/>
-    </div> -->
-
+    <label for="owner_id">Owner:</label>
     <select name="owner_id">
       <% for an_owner in @owners  %>
         <option value="<%= an_owner.id %>"><%= an_owner.name %></option>
       <% end %>
     </select>
+
+    <!-- for an_owner in @owners(which is owners.all)
+    find owner id and print corresponding name
+    within a dropdown menu -->
 
     <div class="form-el">
     <input type="submit" value="Add New Animal"/>

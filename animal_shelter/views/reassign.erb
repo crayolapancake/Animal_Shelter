@@ -1,0 +1,23 @@
+<h2>New Owner Registration</h2>
+<form method="POST" action="/animals/owner">
+  <div class="form-wrapper">
+
+  <div class="form-el">
+    <label for="name">Owner name:</label>
+    <input type="text" name="name" id="name"/>
+  </div>
+
+
+  <select name="animal_id">
+    <% for an_animal in @animals  %>
+    <option value="<%= an_animal.id %>"><%= an_animal.name %></option>
+    <% end %>
+  </select>
+
+
+  <div class="form-el">
+    <input type="submit" value="Adopt an Animal"/>
+  </div>
+
+  </div>
+</form>

@@ -51,12 +51,20 @@ def delete()
 
  def update()
   sql = "UPDATE animals
-  SET
-  (name, species, age, adoptable, owner_id) =
-  ($1, $2, $3, $4, $5)
-  WHERE id = $6"      #remember to change this when adding breed etc
-  values = [@name, @species, @age, @adoptable, @owner_id, @id]
-  SqlRunner.run(sql, values)
+    SET
+    (name, species, age, adoptable, owner_id) =
+    ($1, $2, $3, $4, $5)
+    WHERE id = $6"      #remember to change this when adding breed etc
+    values = [@name, @species, @age, @adoptable, @owner_id, @id]
+    SqlRunner.run(sql, values)
+  end
+
+  def self.adopt(animal_id, owner_id)
+    sql = "UPDATE animals
+          SET owner_id = $1
+          WHERE id = $2"
+    values = [owner_id, animal_id]
+    SqlRunner.run(sql, values)
   end
 
   def self.map_items(animal_data)
@@ -71,5 +79,17 @@ def delete()
     animal = Animal.new(result)
     return animal
   end
+
+  def self.find_cats(species)
+    sql = "SELECT * FROM animals
+    WHERE species = $1"
+    values = (species)
+    result = SqlRunner.run(sql, values).first
+    return animal
+  end
+
+  #
+  # def self.find_dogs
+  # end
 
 end

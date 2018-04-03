@@ -6,9 +6,17 @@ require_relative('models/owner')
 
 get '/animals' do
   # puts "Index Route"
-  @animals = Animal.all
+  @animals = Animal.all()
   erb (:index)
 end
+
+
+get '/animals/cats' do
+  @animals = Animal.find_cats(params['species' == 'cat'])
+  erb(:index)
+end
+
+
 
 get '/animals/new' do
   @owners = Owner.all
@@ -20,9 +28,14 @@ post '/animals' do
   redirect to '/animals'
 end
 
-# get '/animals/owners' do
-#   # puts "Index Route"
-#   @owners = Owner.all
-#   erb (:index)
-# end
-# not working
+get '/animals/owner/new' do
+  @animals = Animal.all
+  erb(:reassign)
+end
+
+post '/animals/owner' do
+  owner = Owner.new(params)
+  owner.save
+  Animal.adopt(params["animal_id"].to_i, owner.id)
+  redirect to '/animals'
+end
