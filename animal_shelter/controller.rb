@@ -3,8 +3,11 @@ require('sinatra/contrib/all') if development?
 require_relative('models/animal')
 require_relative('models/owner')
 
-
 get '/animals' do
+  "Hello There Old Chap! This page is under construction. We need more legos."
+end
+
+get '/animals/all' do
   # puts "Index Route"
   @animals = Animal.all()
   erb (:"animals/index")
@@ -26,9 +29,9 @@ get '/animals/new' do
   erb(:"animals/new")
 end
 
-post '/animals' do
+post '/animals/all' do
   Animal.new(params).save
-  redirect to '/animals'
+  redirect to '/animals/all'
 end
 
 get '/animals/owner/new' do
@@ -40,5 +43,5 @@ post '/animals/owner' do
   owner = Owner.new(params)
   owner.save
   Animal.adopt(params["animal_id"].to_i, owner.id)
-  redirect to '/animals'
+  redirect to '/animals/all'
 end

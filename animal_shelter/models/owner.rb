@@ -1,4 +1,3 @@
-# to do: setup delete & update owner, if needed. remember to change attr_accessor also
 require_relative('../db/sql_runner')
 
 class Owner
@@ -42,5 +41,23 @@ class Owner
   def self.map_items(owner_data)
     return owner_data.map { |owner| Owner.new(owner) }
   end
+
+  def delete()
+     sql = "DELETE FROM owners
+     WHERE id = $1"
+     values = [@id]
+     SqlRunner.run(sql, values)
+   end
+
+   def update()
+    sql = "UPDATE owners
+      SET
+      (name) =
+      ($1)
+      WHERE id = $2"      
+      values = [@name]
+      SqlRunner.run(sql, values)
+    end
+
 
 end

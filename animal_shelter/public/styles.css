@@ -36,9 +36,8 @@ input {
   font-size: 15px;
 }
 
-.submit {
+.submit {}
 
-}
 
 select {
   border: 2px solid navy;
@@ -52,7 +51,7 @@ label {
 }
 
 hr {
-  border: 2px solid black;
+  border: 2px solid purple;
   width: 100%;
 }
 
@@ -69,11 +68,18 @@ img {
   background-image: url(images/download.jpeg);
 }
 
-.animal-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+p {
+  justify-content: center;
+  margin: 5px;
+  font-size: 20px;
 
+}
+
+.animal-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 2px dashed purple;
 
 }
 

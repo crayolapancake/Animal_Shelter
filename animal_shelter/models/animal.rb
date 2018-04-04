@@ -54,7 +54,7 @@ def delete()
     SET
     (name, species, age, adoptable, owner_id) =
     ($1, $2, $3, $4, $5)
-    WHERE id = $6"      #remember to change this when adding breed etc
+    WHERE id = $6"
     values = [@name, @species, @age, @adoptable, @owner_id, @id]
     SqlRunner.run(sql, values)
   end

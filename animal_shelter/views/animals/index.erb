@@ -2,9 +2,9 @@
 <% @animals.each do |animal| %>
 
   <p>Animal Name: <%= animal.name.capitalize() %></p>
-  <p>Species: <%= animal.species() %></p>
+  <p>Species: <%= animal.species.capitalize() %></p>
   <p>Age: <%= animal.age() %></p>
-  <p>Adoptable: <%= animal.adoptable() %></p>
+  <p>Adoptable: <%= animal.adoptable.capitalize() %></p>
   <p>Owner: <%= animal.owner.name.capitalize %></p>
   <hr/>
 
