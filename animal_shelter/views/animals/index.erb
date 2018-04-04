@@ -1,15 +1,12 @@
 <div id="animal-wrapper">
 <% @animals.each do |animal| %>
 
-  <p>Name: <%= animal.name.capitalize() %></p>
+  <p>Animal Name: <%= animal.name.capitalize() %></p>
   <p>Species: <%= animal.species() %></p>
   <p>Age: <%= animal.age() %></p>
   <p>Adoptable: <%= animal.adoptable() %></p>
   <p>Owner: <%= animal.owner.name.capitalize %></p>
   <hr/>
-
-  <!-- could have href to individual owner's links -->
-
 
 <% end %>
 </div>

@@ -7,23 +7,23 @@ require_relative('models/owner')
 get '/animals' do
   # puts "Index Route"
   @animals = Animal.all()
-  erb (:index)
+  erb (:"animals/index")
 end
 
 
 get '/animals/cats' do
   @animals = Animal.find_species('cat')
-  erb(:index)
+  erb (:"animals/index")
 end
 
 get '/animals/dogs' do
   @animals = Animal.find_species('dog')
-  erb(:index)
+  erb (:"animals/index")
 end
 
 get '/animals/new' do
   @owners = Owner.all
-  erb(:new)
+  erb(:"animals/new")
 end
 
 post '/animals' do
@@ -33,7 +33,7 @@ end
 
 get '/animals/owner/new' do
   @animals = Animal.all
-  erb(:reassign)
+  erb(:"owners/reassign")
 end
 
 post '/animals/owner' do
