@@ -4,7 +4,8 @@ require_relative('models/animal')
 require_relative('models/owner')
 
 get '/animals' do
-  "Hello! This page is under construction. We need more legos."
+  "Hello!"
+  erb (:"home")
 end
 
 get '/animals/all' do
