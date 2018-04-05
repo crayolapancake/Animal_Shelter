@@ -4,7 +4,7 @@ require_relative('models/animal')
 require_relative('models/owner')
 
 get '/animals' do
-  "Hello There Old Chap! This page is under construction. We need more legos."
+  "Hello! This page is under construction. We need more legos."
 end
 
 get '/animals/all' do

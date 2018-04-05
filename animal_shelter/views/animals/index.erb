@@ -1,12 +1,26 @@
+<h3>Adopted Animals and Their Owners</h3>
 <div class="animal-wrapper">
+
+<table>
+  <tr>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Species</th>
+    <th>Age</th>
+    <th>Adoptable</th>
+    <th>Owner</th>
+  </tr>
+
 <% @animals.each do |animal| %>
 
-  <p>Animal Name: <%= animal.name.capitalize() %></p>
-  <p>Species: <%= animal.species.capitalize() %></p>
-  <p>Age: <%= animal.age() %></p>
-  <p>Adoptable: <%= animal.adoptable.capitalize() %></p>
-  <p>Owner: <%= animal.owner.name.capitalize %></p>
-  <hr/>
-
+<tr>
+  <td><img class="thumbnail" src="<%= animal.image_url %>"></td>
+  <td> <%= animal.name.capitalize() %></td>
+  <td><%= animal.species.capitalize() %></td>
+  <td><%= animal.age() %></td>
+  <td><%= animal.adoptable.capitalize() %></td>
+  <td><%= animal.owner.name.capitalize %></td>
 <% end %>
+</tr>
+</table>
 </div>

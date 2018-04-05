@@ -9,6 +9,7 @@ CREATE TABLE owners (
 
 CREATE TABLE animals (
   id SERIAL8 PRIMARY KEY,
+  image_url VARCHAR(255),
   name VARCHAR(255),
   species VARCHAR(255),
   age INT8,
