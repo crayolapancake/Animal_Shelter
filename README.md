@@ -28,3 +28,5 @@ Set up tables: $ psql -d animal_shelter -f db/animal_shelter.sql
 
 Seed development database with some data $ ruby db/seeds.rb
 
+Run ruby controller.rb
+
