@@ -19,7 +19,7 @@ Install pry: $ gem install pry
 
 $ git clone ...
 
-# If prompted, install the version of Ruby required for this project
+## If prompted, install the version of Ruby required for this project
 
 Install project gems: $ bundler install
 
