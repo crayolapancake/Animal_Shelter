@@ -1,4 +1,4 @@
-# wk05_Project1_Animal_Shelter
+## Animal Shelter: Ruby Project
 
 Web application Project
 
@@ -7,7 +7,8 @@ Designed an animal shelter website with details of animals to be adopted and fun
 Built using Ruby, HTML, CSS and PostgreSQL using CRUD.
 
 
-Install
+## Installation
+
 Install Postgres: $ brew install postgres && brew services start postgresql
 
 Install rvm http://rvm.io/
@@ -18,7 +19,7 @@ Install pry: $ gem install pry
 
 $ git clone ...
 
-If prompted, install the version of Ruby required for this project
+# If prompted, install the version of Ruby required for this project
 
 Install project gems: $ bundler install
 
